@@ -1,7 +1,7 @@
 # Common configuration variables to set the binaries and resources allocation directories for Eclipse Kanto suite connector component
 # The destination directory where the required configuration files for the proper connectivity establishment of the suite connector will be placed
-EK_CFG_DD ?= "${sysconfdir}"
+SC_CFG_DD ?= "${sysconfdir}"
 # The destination directory where the generated service file will be placed
-EK_SYSUNIT_DD ?= "${systemd_unitdir}/system"
+SC_SYSUNIT_DD ?= "${systemd_unitdir}/system"
 # The destination directory where the suite connector binaries will be placed
-EK_BIN_DD ?= "${bindir}"
+SC_BIN_DD ?= "${bindir}"
