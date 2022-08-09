@@ -36,7 +36,10 @@ URI: git://git.yoctoproject.org/meta-virtualization
 
 ## Adding the meta-kanto layer to your build
 
-Run: `bitbake-layers add-layer meta-kanto`
+Run: 
+```
+bitbake-layers add-layer meta-kanto
+```
 
 ## Required image configurations
 
@@ -69,7 +72,7 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
 VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
 
 # Add the Eclipse Kanto components
-IMAGE_INSTALL:append = " suite-connector container-management"
+IMAGE_INSTALL:append = " suite-connector"
 ```
 ## Community
 

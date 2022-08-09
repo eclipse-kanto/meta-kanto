@@ -10,6 +10,8 @@ SRC_URI = "git://github.com/eclipse-kanto/suite-connector;protocol=https;branch=
 
 SRCREV = "${AUTOREV}"
 
+PV = "0.1.0-git${SRCPV}"
+
 GO_IMPORT = "github.com/eclipse-kanto/suite-connector"
 GO_INSTALL = "${GO_IMPORT}/cmd/connector"
 
@@ -41,14 +43,7 @@ RPROVIDES:${PN} += "kanto/suite-connector"
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
  
-  # x86_64
-  if  [ -f "${B}/bin/connector" ]; then
-        install -m 0755 "${B}/bin/connector" "${D}${SC_BIN_DD}/suite-connector"
-  fi
-  
-  if  [ -f "${B}/bin/linux_${GOARCH}/connector" ]; then
-        install -m 0755 "${B}/bin/linux_${GOARCH}/connector" "${D}${SC_BIN_DD}/suite-connector"
-  fi
+  install -m 0755 "${GO_BUILD_BINDIR}/connector" "${D}${SC_BIN_DD}/suite-connector"
   
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
     install -d ${D}${SC_SYSUNIT_DD}
