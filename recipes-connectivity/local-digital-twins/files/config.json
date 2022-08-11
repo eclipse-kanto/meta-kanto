@@ -1,0 +1,5 @@
+{
+    "cacert": "@LDT_CFG_DD@/iothub.crt",
+    "provisioningFile": "@LDT_CFG_DD@/provisioning.json",
+    "logFile": "/var/log/local-digital-twins/local-digital-twins.log"
+}

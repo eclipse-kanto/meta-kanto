@@ -1,0 +1,15 @@
+[Unit]
+Description=Eclipse Kanto - Local Digital Twins
+Documentation=https://eclipse.org/kanto/docs/
+After=network.target mosquitto.service
+Requires=network.target
+Requires=mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=@LDT_BIN_DD@/local-digital-twins -configFile @LDT_CFG_DD@/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
