@@ -20,10 +20,7 @@ For further fine-tuning and options see the meta-virtualization README.
   Could be used as a single dependency if only suite connector
   is needed to be built.
   URI: git://github.com/openembedded/meta-openembedded.git layers:
-* meta-oe
 * meta-networking
-* meta-filesystems
-* meta-python
 
 Required for enabling edge containerization
 URI: git://git.yoctoproject.org/meta-virtualization
