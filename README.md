@@ -19,10 +19,12 @@ For further fine-tuning and options see the meta-virtualization README.
   Required for enabling the cloud connectivity and virtualization.
   Could be used as a single dependency if only suite connector
   is needed to be built.
+
   URI: git://github.com/openembedded/meta-openembedded.git layers:
 * meta-networking
 
 Required for enabling edge containerization
+
 URI: git://git.yoctoproject.org/meta-virtualization
 
 # Table of Contents
