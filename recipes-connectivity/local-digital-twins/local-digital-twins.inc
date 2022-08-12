@@ -6,4 +6,4 @@ LDT_SYSUNIT_DD ?= "${systemd_unitdir}/system"
 # The destination directory where the local digital twins binaries will be placed
 LDT_BIN_DD ?= "${bindir}"
 # The destination directory where the local digital twins logs will be placed
-LDT_LOG_DD ?= "/var/log"
+LDT_LOG_DD ?= "${localstatedir}/log"
