@@ -6,4 +6,4 @@ SM_SYSUNIT_DD ?= "${systemd_unitdir}/system"
 # The destination directory where the binaries will be placed
 SM_BIN_DD ?= "${bindir}"
 # The destination directory where the logs will be placed
-SM_LOG_DD ?= "/var/log"
+SM_LOG_DD ?= "${localstatedir}/log"
