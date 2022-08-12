@@ -67,6 +67,7 @@ do_install() {
     
     # fill in the config.json template with the custom configs provided
     sed -e 's,@SC_CFG_DD@,${SC_CFG_DD},g' \
+	    -e 's,@SC_LOG_DD@,${SC_LOG_DD},g' \
         -i ${D}${SC_CFG_DD}/suite-connector/config.json
   fi
   

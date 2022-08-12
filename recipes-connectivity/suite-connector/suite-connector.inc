@@ -5,3 +5,5 @@ SC_CFG_DD ?= "${sysconfdir}"
 SC_SYSUNIT_DD ?= "${systemd_unitdir}/system"
 # The destination directory where the suite connector binaries will be placed
 SC_BIN_DD ?= "${bindir}"
+# The destination directory where the suite connector logs will be placed
+SC_LOG_DD ?= "${localstatedir}/log"
