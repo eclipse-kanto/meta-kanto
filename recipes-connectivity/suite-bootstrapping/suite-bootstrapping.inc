@@ -5,3 +5,5 @@ SB_CFG_DD ?= "${sysconfdir}"
 SB_SYSUNIT_DD ?= "${systemd_unitdir}/system"
 # The destination directory where the suite bootstrapping agent binaries will be placed
 SB_BIN_DD ?= "${bindir}"
+# The destination directory where the suite bootstrapping agent logs will be placed
+SB_LOG_DD ?= "/var/log"

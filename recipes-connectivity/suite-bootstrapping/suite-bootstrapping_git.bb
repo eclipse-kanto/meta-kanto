@@ -62,11 +62,12 @@ do_install() {
     
     # fill in the suite-bootstrapping systemd service template with the custom configs provided
     sed -e 's,@SB_BIN_DD@,${SB_BIN_DD},g' \
-        -e 's,@SB_CFG_DD@,${SB_CFG_DD}/suite-bootstrapping,g' \
+        -e 's,@SB_CFG_DD@,${SB_CFG_DD},g' \
         -i ${D}${SB_SYSUNIT_DD}/suite-bootstrapping.service
     
     # fill in the config.json template with the custom configs provided
-    sed -e 's,@SB_CFG_DD@,${SB_CFG_DD}/suite-bootstrapping,g' \
+    sed -e 's,@SB_CFG_DD@,${SB_CFG_DD},g' \
+        -e 's,@SB_LOG_DD@,${SB_LOG_DD},g' \
         -i ${D}${SB_CFG_DD}/suite-bootstrapping/config.json
   fi
   
