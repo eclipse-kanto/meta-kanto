@@ -27,8 +27,8 @@ SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','syste
 # workaround for network issue
 do_compile[network] = "1"
 
-FILES:${PN} += "${EK_SYSUNIT_DD}/system-metrics.service"
-FILES:${PN} += "${EK_BIN_DD}/system-metrics"
+FILES:${PN} += "${SM_SYSUNIT_DD}/system-metrics.service"
+FILES:${PN} += "${SM_BIN_DD}/system-metrics"
 # ensure all additional resources are properly packed in the resulting package if provided
 FILES:${PN} += "${SM_CFG_DD}/system-metrics/config.json"
 
@@ -61,8 +61,7 @@ do_install() {
         -i ${D}${SM_SYSUNIT_DD}/system-metrics.service
 
     # fill in the config.json template with the custom configs provided
-    sed -e 's,@SM_CFG_DD@,${SM_CFG_DD},g' \
-         -e 's,@SM_LOG_DD@,${SM_LOG_DD},g' \
+    sed -e 's,@SM_LOG_DD@,${SM_LOG_DD},g' \
         -i ${D}${SM_CFG_DD}/system-metrics/config.json
   fi
 
