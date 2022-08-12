@@ -7,7 +7,7 @@ Requires=mosquitto.service
 
 [Service]
 Type=simple
-ExecStart=@SC_BIN_DD@/suite-connector -configFile @SC_CFG_DD@/config.json
+ExecStart=@SC_BIN_DD@/suite-connector -configFile @SC_CFG_DD@/suite-connector/config.json
 Restart=always
 
 [Install]

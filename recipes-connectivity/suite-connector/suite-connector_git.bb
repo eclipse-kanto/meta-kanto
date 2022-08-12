@@ -62,11 +62,11 @@ do_install() {
     
     # fill in the suite-connector systemd service template with the custom configs provided
     sed -e 's,@SC_BIN_DD@,${SC_BIN_DD},g' \
-        -e 's,@SC_CFG_DD@,${SC_CFG_DD}/suite-connector,g' \
+        -e 's,@SC_CFG_DD@,${SC_CFG_DD},g' \
         -i ${D}${SC_SYSUNIT_DD}/suite-connector.service
     
     # fill in the config.json template with the custom configs provided
-    sed -e 's,@SC_CFG_DD@,${SC_CFG_DD}/suite-connector,g' \
+    sed -e 's,@SC_CFG_DD@,${SC_CFG_DD},g' \
         -i ${D}${SC_CFG_DD}/suite-connector/config.json
   fi
   
