@@ -7,7 +7,7 @@ Requires=mosquitto.service
 
 [Service]
 Type=simple
-ExecStart=@LDT_BIN_DD@/local-digital-twins -configFile @LDT_CFG_DD@/config.json
+ExecStart=@LDT_BIN_DD@/local-digital-twins -configFile @LDT_CFG_DD@/local-digital-twins/config.json
 Restart=always
 
 [Install]

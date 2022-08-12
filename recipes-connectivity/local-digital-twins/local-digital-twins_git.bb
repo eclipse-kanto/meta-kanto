@@ -62,11 +62,12 @@ do_install() {
 
     # fill in the local-digital-twins systemd service template with the custom configs provided
     sed -e 's,@LDT_BIN_DD@,${LDT_BIN_DD},g' \
-        -e 's,@LDT_CFG_DD@,${LDT_CFG_DD}/local-digital-twins,g' \
+        -e 's,@LDT_CFG_DD@,${LDT_CFG_DD},g' \
         -i ${D}${LDT_SYSUNIT_DD}/local-digital-twins.service
 
     # fill in the config.json template with the custom configs provided
-    sed -e 's,@LDT_CFG_DD@,${LDT_CFG_DD}/local-digital-twins,g' \
+    sed -e 's,@LDT_CFG_DD@,${LDT_CFG_DD},g' \
+        -e 's,@LDT_LOG_DD@,${LDT_LOG_DD},g' \
         -i ${D}${LDT_CFG_DD}/local-digital-twins/config.json
   fi
 
