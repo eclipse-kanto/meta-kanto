@@ -57,11 +57,12 @@ do_install() {
 
     # fill in the system-metrics systemd service template with the custom configs provided
     sed -e 's,@SM_BIN_DD@,${SM_BIN_DD},g' \
-        -e 's,@SM_CFG_DD@,${SM_CFG_DD}/system-metrics,g' \
+        -e 's,@SM_CFG_DD@,${SM_CFG_DD},g' \
         -i ${D}${SM_SYSUNIT_DD}/system-metrics.service
 
     # fill in the config.json template with the custom configs provided
-    sed -e 's,@SM_CFG_DD@,${SM_CFG_DD}/system-metrics,g' \
+    sed -e 's,@SM_CFG_DD@,${SM_CFG_DD},g' \
+         -e 's,@SM_LOG_DD@,${SM_LOG_DD},g' \
         -i ${D}${SM_CFG_DD}/system-metrics/config.json
   fi
 
