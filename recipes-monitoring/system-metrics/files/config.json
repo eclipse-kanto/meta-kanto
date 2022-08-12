@@ -1,0 +1,3 @@
+{
+    "logFile": "@SM_LOG_DD@/system-metrics/log.txt"
+}
