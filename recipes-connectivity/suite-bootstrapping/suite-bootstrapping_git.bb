@@ -1,4 +1,4 @@
-DESCRIPTION = "Eclipse Kanto - Suite bootstrapping Agent"
+DESCRIPTION = "Eclipse Kanto - Suite Bootstrapping Agent"
 
 LICENSE = "EPL-2.0"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=c7cc8aa73fb5717f8291fcec5ce9ed6c"
@@ -37,8 +37,8 @@ FILES:${PN} += "${SB_CFG_DD}/suite-bootstrapping/iothub.crt"
 
 RDEPENDS:${PN} += "mosquitto"
 
-PROVIDES:${PN} += "edge/suite-bootstrapping"
-RPROVIDES:${PN} += "edge/suite-bootstrapping"
+PROVIDES:${PN} += "kanto/suite-bootstrapping"
+RPROVIDES:${PN} += "kanto/suite-bootstrapping"
 
 do_install() {
   install -d "${D}/${SB_BIN_DD}"

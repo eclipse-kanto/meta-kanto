@@ -1,4 +1,4 @@
-# Common configuration variables to set the binaries and resources allocation directories for Eclipse Kanto bootstrapping component
+# Common configuration variables to set the binaries and resources allocation directories for Eclipse Kanto suite bootstrapping component
 # The destination directory where the required configuration files for the proper connectivity establishment of the bootstrapping agent will be placed
 SB_CFG_DD ?= "${sysconfdir}"
 # The destination directory where the generated service file will be placed
