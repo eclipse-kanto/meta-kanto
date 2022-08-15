@@ -76,4 +76,3 @@ do_install() {
     install -m 0644  ${THISDIR}/files/provisioning.json ${D}${SB_CFG_DD}/suite-bootstrapping
   fi
 }
-
