@@ -24,19 +24,18 @@ SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES','systemd','${PN}','',d)}"
 SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','file-upload.service','',d)}"
 
-#workaround for network issue
+# workaround for network issue
 do_compile[network] = "1"
 
 FILES:${PN} += "${FU_SYSUNIT_DD}/file-upload.service"
 FILES:${PN} += "${FU_BIN_DD}/file-upload"
-#Ensure all additional resources are properly packed in the resulting package if provided
+# ensure all additional resources are properly packed in the resulting package if provided
 FILES:${PN} += "${FU_CFG_DD}/file-upload/config.json"
-
 
 RDEPENDS:${PN} += "mosquitto"
 
-PROVIDES:${PN} += "edge/file-upload"
-RPROVIDES:${PN} += "edge/file-upload"
+PROVIDES:${PN} += "kanto/file-upload"
+RPROVIDES:${PN} += "kanto/file-upload"
 
 do_install() {
   install -d "${D}/${FU_BIN_DD}"
@@ -44,7 +43,7 @@ do_install() {
   install -m 0755 "${GO_BUILD_BINDIR}/file-upload" "${D}${FU_BIN_DD}/file-upload"
 
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
-   install -d ${D}${FU_SYSUNIT_DD}
+    install -d ${D}${FU_SYSUNIT_DD}
 
     # file-upload
     install -d ${D}${FU_CFG_DD}/file-upload
@@ -57,13 +56,12 @@ do_install() {
 
     # fill in the file-upload systemd service template with the custom configs provided
     sed -e 's,@FU_BIN_DD@,${FU_BIN_DD},g' \
-        -e 's,@FU_CFG_DD@,${FU_CFG_DD}/file-upload,g' \
+        -e 's,@FU_CFG_DD@,${FU_CFG_DD},g' \
         -i ${D}${FU_SYSUNIT_DD}/file-upload.service
 
     # fill in the config.json template with the custom configs provided
-    sed -e 's,@FU_CFG_DD@,${FU_CFG_DD}/file-upload,g' \
+    sed -e 's,@FU_LOG_DD@,${FU_LOG_DD},g' \
+        -e 's,@FU_UPLOAD_DD@,${FU_UPLOAD_DD},g' \
         -i ${D}${FU_CFG_DD}/file-upload/config.json
   fi
-
 }
-

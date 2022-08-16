@@ -7,9 +7,8 @@ Requires=mosquitto.service
 
 [Service]
 Type=simple
-ExecStart=@FU_BIN_DD@/file-upload -configFile @FU_CFG_DD@/config.json
+ExecStart=@FU_BIN_DD@/file-upload -configFile @FU_CFG_DD@/file-upload/config.json
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
