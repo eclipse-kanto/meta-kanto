@@ -34,7 +34,6 @@ FILES:${PN} += "${SB_CFG_DD}/suite-bootstrapping/config.json"
 FILES:${PN} += "${SB_CFG_DD}/suite-bootstrapping/provisioning.json"
 FILES:${PN} += "${SB_CFG_DD}/suite-bootstrapping/iothub.crt"
 
-
 RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/suite-bootstrapping"
