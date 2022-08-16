@@ -75,5 +75,4 @@ do_install() {
   if  [ -f "${THISDIR}/files/provisioning.json" ]; then
     install -m 0644  ${THISDIR}/files/provisioning.json ${D}/${LDT_CFG_DD}/local-digital-twins
   fi
-
 }
