@@ -46,7 +46,7 @@ do_install() {
   install -m 0755 "${GO_BUILD_BINDIR}/bootstrapping" "${D}${SB_BIN_DD}/suite-bootstrapping"
   
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
-   install -d ${D}${SB_SYSUNIT_DD}
+    install -d ${D}${SB_SYSUNIT_DD}
     
     # suite-bootstrapping
     install -d ${D}${SB_CFG_DD}/suite-bootstrapping
