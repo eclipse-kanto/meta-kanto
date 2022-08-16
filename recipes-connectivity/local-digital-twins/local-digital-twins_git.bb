@@ -34,7 +34,6 @@ FILES:${PN} += "${LDT_CFG_DD}/local-digital-twins/config.json"
 FILES:${PN} += "${LDT_CFG_DD}/local-digital-twins/provisioning.json"
 FILES:${PN} += "${LDT_CFG_DD}/local-digital-twins/iothub.crt"
 
-
 RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/local-digital-twins"
