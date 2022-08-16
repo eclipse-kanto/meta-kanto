@@ -3,9 +3,9 @@
 FU_CFG_DD ?= "${sysconfdir}"
 # The destination directory where the generated service file will be placed
 FU_SYSUNIT_DD ?= "${systemd_unitdir}/system"
-# The destination directory where the binaries will be placed
+# The destination directory where the file upload binaries will be placed
 FU_BIN_DD ?= "${bindir}"
-# The destination directory where the logs will be placed
+# The destination directory where the file upload logs will be placed
 FU_LOG_DD ?= "${localstatedir}/log"
 # The source directory containing files for upload
 FU_UPLOAD_DD ?= "${localstatedir}/tmp/file-upload"
