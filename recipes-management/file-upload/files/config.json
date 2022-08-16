@@ -1,0 +1,4 @@
+{
+    "logFile": "@FU_LOG_DD@/file-upload/file-upload.log",
+    "files": "@FU_UPLOAD_DD@/*.*"
+}

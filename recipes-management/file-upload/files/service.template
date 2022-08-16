@@ -1,0 +1,14 @@
+[Unit]
+Description=Eclipse Kanto - File Upload
+Documentation=https://eclipse.org/kanto/docs/
+After=network.target mosquitto.service
+Requires=network.target
+Requires=mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=@FU_BIN_DD@/file-upload -configFile @FU_CFG_DD@/file-upload/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

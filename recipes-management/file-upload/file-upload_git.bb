@@ -1,0 +1,67 @@
+DESCRIPTION = "Eclipse Kanto - File Upload"
+
+LICENSE = "EPL-2.0"
+LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=c7cc8aa73fb5717f8291fcec5ce9ed6c"
+
+SRC_URI = "git://github.com/eclipse-kanto/file-upload;protocol=https;branch=main \
+           file://config.json \
+           file://service.template \
+           "
+
+SRCREV = "${AUTOREV}"
+
+PV = "0.1.0-git${SRCPV}"
+
+GO_IMPORT = "github.com/eclipse-kanto/file-upload"
+GO_INSTALL = "${GO_IMPORT}"
+
+require file-upload.inc
+
+inherit go-mod
+inherit systemd
+
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES','systemd','${PN}','',d)}"
+SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','file-upload.service','',d)}"
+
+# workaround for network issue
+do_compile[network] = "1"
+
+FILES:${PN} += "${FU_SYSUNIT_DD}/file-upload.service"
+FILES:${PN} += "${FU_BIN_DD}/file-upload"
+# ensure all additional resources are properly packed in the resulting package if provided
+FILES:${PN} += "${FU_CFG_DD}/file-upload/config.json"
+
+RDEPENDS:${PN} += "mosquitto"
+
+PROVIDES:${PN} += "kanto/file-upload"
+RPROVIDES:${PN} += "kanto/file-upload"
+
+do_install() {
+  install -d "${D}/${FU_BIN_DD}"
+
+  install -m 0755 "${GO_BUILD_BINDIR}/file-upload" "${D}${FU_BIN_DD}/file-upload"
+
+  if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
+    install -d ${D}${FU_SYSUNIT_DD}
+
+    # file-upload
+    install -d ${D}${FU_CFG_DD}/file-upload
+
+    # config.json
+    install -m 0644 ${WORKDIR}/config.json ${D}${FU_CFG_DD}/file-upload
+
+    # service.template as service
+    install -m 0644 ${WORKDIR}/service.template ${D}${FU_SYSUNIT_DD}/file-upload.service
+
+    # fill in the file-upload systemd service template with the custom configs provided
+    sed -e 's,@FU_BIN_DD@,${FU_BIN_DD},g' \
+        -e 's,@FU_CFG_DD@,${FU_CFG_DD},g' \
+        -i ${D}${FU_SYSUNIT_DD}/file-upload.service
+
+    # fill in the config.json template with the custom configs provided
+    sed -e 's,@FU_LOG_DD@,${FU_LOG_DD},g' \
+        -e 's,@FU_UPLOAD_DD@,${FU_UPLOAD_DD},g' \
+        -i ${D}${FU_CFG_DD}/file-upload/config.json
+  fi
+}
