@@ -1,0 +1,4 @@
+{
+    "storageLocation": "@SU_STORAGE_DD@/software-update",
+    "logFile": "@SU_LOG_DD@/software-update/software-update.log"
+}
