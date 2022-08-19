@@ -1,5 +1,5 @@
 {
-    "cacert": "@SB_CFG_DD@/suite-bootstrapping/iothub.crt",
+    "caCert": "@SB_CFG_DD@/suite-bootstrapping/iothub.crt",
     "provisioningFile": "@SB_CFG_DD@/suite-bootstrapping/provisioning.json",
     "logFile": "@SB_LOG_DD@/suite-bootstrapping/suite-bootstrapping.log"
 }
