@@ -1,0 +1,8 @@
+{
+    "log": {
+        "log_file": "@CM_LOD_DD@/container-management/container-management.log"
+    },
+    "things": {
+        "enable": @CM_THINGS_ENABLED@
+    }
+}
