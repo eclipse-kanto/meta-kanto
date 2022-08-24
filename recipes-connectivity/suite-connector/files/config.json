@@ -1,5 +1,5 @@
 {
-    "cacert": "@SC_CFG_DD@/suite-connector/iothub.crt",
+    "caCert": "@SC_CFG_DD@/suite-connector/iothub.crt",
     "provisioningFile": "@SC_CFG_DD@/suite-connector/provisioning.json",
     "logFile": "@SC_LOG_DD@/suite-connector/suite-connector.log"
 }
