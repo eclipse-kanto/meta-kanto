@@ -15,7 +15,7 @@ PV = "0.1.0-git${SRCPV}"
 GO_IMPORT = "github.com/eclipse-kanto/container-management"
 GO_INSTALL = "${GO_IMPORT}/containerm/daemon \
              ${GO_IMPORT}/containerm/cli \
-            "
+             "
 
 require container-management.inc
 
