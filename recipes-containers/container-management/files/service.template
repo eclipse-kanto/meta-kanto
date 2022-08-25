@@ -1,8 +1,8 @@
 [Unit]
 Description=Eclipse Kanto - Container Management
 Documentation=https://eclipse.org/kanto/docs/
-After=network.target containerd.service @CM_SRV_AFTER@
-Requires=network.target containerd.service @CM_SRV_REQ@
+After=network.target containerd.service
+Requires=network.target containerd.service
 
 [Service]
 Type=simple

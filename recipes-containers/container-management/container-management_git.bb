@@ -41,7 +41,7 @@ PACKAGECONFIG ?= "cloudconn"
 # It's enabled by default as container management is expected to work as an integrated component of the suite connector and not as a
 # standalone service.
 # Nevertheless, if this is required - it can be disabled on demand as shown above.
-PACKAGECONFIG[cloudconn] = "--with-cloudconn,--without-cloudconn,,kanto/suite-connector"
+PACKAGECONFIG[cloudconn] = "--with-cloudconn,--without-cloudconn"
 
 FILES:${PN} += "${CM_SYSUNIT_DD}/container-management.service"
 FILES:${PN} += "${CM_BIN_DD}/container-management ${CM_BIN_DD}/kanto-cm"
@@ -70,8 +70,6 @@ do_install() {
     # fill in the container management service template with the result configurations
     sed -e 's,@CM_BIN_DD@,${CM_BIN_DD},g' \
         -e 's,@CM_CFG_DD@,${CM_CFG_DD},g' \
-        -e 's,@CM_SRV_AFTER@,${CM_SRV_AFTER},g' \
-        -e 's,@CM_SRV_REQ@,${CM_SRV_REQ},g' \
     -i ${D}${CM_SYSUNIT_DD}/container-management.service
 
     # fill in the config.json template with the custom configs provided
