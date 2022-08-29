@@ -1,0 +1,5 @@
+{
+    "logFile": "@FB_LOG_DD@/file-backup/file-backup.log",
+    "dir": "@FB_BACKUP_DD@",
+    "mode": "scoped"
+}
