@@ -37,9 +37,9 @@ inherit pkgconfig
 #             PACKAGECONFIG:remove = "cloudconn"
 # into a .bbappend file to the original recipe.
 PACKAGECONFIG ?= "cloudconn"
-# This package feature enables the digital twin of the container management service.
-# It's enabled by default as container management is expected to work as an integrated Kanto component and not as a
-# standalone service.
+# This package feature enables the digital twin representation for container management.
+# It's enabled by default as the Kanto container management is intended to work with an integrated Kanto cloud connectivity component
+# of choice and not as a standalone detached component.
 # Nevertheless, if this is required - it can be disabled on demand as shown above.
 PACKAGECONFIG[cloudconn] = "--with-cloudconn,--without-cloudconn"
 
