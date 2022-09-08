@@ -1,6 +1,6 @@
 ![Kanto logo](https://github.com/eclipse-kanto/kanto/raw/main/logo/kanto.svg)
 
-# Eclipse Kanto - Yocto layer
+# Eclipse Kanto - Yocto Layer
 
 This layer provides support for building the necessary Eclipse Kanto
 components.
