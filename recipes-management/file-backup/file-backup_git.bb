@@ -62,6 +62,7 @@ do_install() {
     # fill in the config.json template with the custom configs provided
     sed -e 's,@FB_LOG_DD@,${FB_LOG_DD},g' \
         -e 's,@FB_BACKUP_DD@,${FB_BACKUP_DD},g' \
+        -e 's,@FB_ACCESS_MODE@,${FB_ACCESS_MODE},g' \
         -i ${D}${FB_CFG_DD}/file-backup/config.json
   fi
 }

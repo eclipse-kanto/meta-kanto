@@ -9,3 +9,5 @@ FB_BIN_DD ?= "${bindir}"
 FB_LOG_DD ?= "${localstatedir}/log"
 # The directory to be backed up
 FB_BACKUP_DD ?= "${localstatedir}/tmp/file-backup"
+# The access mode for the the directory to be backed up or restored
+FB_ACCESS_MODE ?= "scoped"
