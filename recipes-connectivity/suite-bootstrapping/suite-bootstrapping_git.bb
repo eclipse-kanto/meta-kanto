@@ -1,7 +1,7 @@
 DESCRIPTION = "Eclipse Kanto - Suite Bootstrapping"
 
-LICENSE = "EPL-2.0"
-LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=c7cc8aa73fb5717f8291fcec5ce9ed6c"
+LICENSE = "EPL-2.0 | Apache-2.0"
+LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=54cd967551e55d39f55006d3344c22fc"
 
 SRC_URI = "git://github.com/eclipse-kanto/suite-bootstrapping;protocol=https;branch=main \
            file://config.json \
