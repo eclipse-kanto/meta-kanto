@@ -1,6 +1,6 @@
 DESCRIPTION = "Eclipse Kanto - File Backup"
 
-LICENSE = "EPL-2.0"
+LICENSE = "EPL-2.0 | Apache-2.0"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=54cd967551e55d39f55006d3344c22fc"
 
 SRC_URI = "git://github.com/eclipse-kanto/file-backup;protocol=https;branch=main \
