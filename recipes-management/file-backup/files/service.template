@@ -1,0 +1,14 @@
+[Unit]
+Description=Eclipse Kanto - File Backup
+Documentation=https://eclipse.org/kanto/docs/
+After=network.target mosquitto.service
+Requires=network.target
+Requires=mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=@FB_BIN_DD@/file-backup -configFile @FB_CFG_DD@/file-backup/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
