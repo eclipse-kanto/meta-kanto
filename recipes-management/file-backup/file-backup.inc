@@ -11,3 +11,5 @@ FB_LOG_DD ?= "${localstatedir}/log"
 FB_BACKUP_DD ?= "${localstatedir}/tmp/file-backup"
 # The access mode for the directory to be backed up or restored. Allowed values are: strict, scoped and lax.
 FB_ACCESS_MODE ?= "scoped"
+# Directory where backups and downloads will be stored
+FB_BACKUP_STORAGE_DD ?= "${localstatedir}/lib/file-backup"

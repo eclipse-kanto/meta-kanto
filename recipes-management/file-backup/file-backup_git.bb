@@ -63,6 +63,7 @@ do_install() {
     sed -e 's,@FB_LOG_DD@,${FB_LOG_DD},g' \
         -e 's,@FB_BACKUP_DD@,${FB_BACKUP_DD},g' \
         -e 's,@FB_ACCESS_MODE@,${FB_ACCESS_MODE},g' \
+        -e 's,@FB_BACKUP_STORAGE_DD@,${FB_BACKUP_STORAGE_DD},g' \
         -i ${D}${FB_CFG_DD}/file-backup/config.json
   fi
 }
