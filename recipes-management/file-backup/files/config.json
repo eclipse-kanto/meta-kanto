@@ -2,5 +2,5 @@
     "logFile": "@FB_LOG_DD@/file-backup/file-backup.log",
     "dir": "@FB_BACKUP_DD@",
     "mode": "@FB_ACCESS_MODE@",
-    "storage": "@FB_STORAGE_DD@"
+    "storage": "@FB_STORAGE_DD@/file-backup"
 }
