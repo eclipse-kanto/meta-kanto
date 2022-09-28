@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/system-metrics;protocol=https;branch=m
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "f18ff434bcff41de7d6885c2b4cfa9b367fbcae2"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -37,6 +37,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/system-metrics"
 RPROVIDES:${PN} += "kanto/system-metrics"
+
+BUILD_VERSION = "v0.1.0-M2"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${SM_BIN_DD}"

@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/suite-connector;protocol=https;branch=
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "143cacbc1088ddbc219877e5d84f30a4957fc566"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -39,6 +39,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/suite-connector"
 RPROVIDES:${PN} += "kanto/suite-connector"
+
+BUILD_VERSION = "v0.1.0-M2"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${SC_BIN_DD}"

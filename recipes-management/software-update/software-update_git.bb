@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/software-update;protocol=https;branch=
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "73758d68a6751391cbbe282235fd57d83820ab79"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -36,6 +36,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/software-update"
 RPROVIDES:${PN} += "kanto/software-update"
+
+BUILD_VERSION = "v0.1.0-M2"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${SU_BIN_DD}"

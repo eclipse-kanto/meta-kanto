@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/file-upload;protocol=https;branch=main
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "5ba9ae26179074d8d52d836e51d3886cccc00f42"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -36,6 +36,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/file-upload"
 RPROVIDES:${PN} += "kanto/file-upload"
+
+BUILD_VERSION = "v0.1.0-M2"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${FU_BIN_DD}"
