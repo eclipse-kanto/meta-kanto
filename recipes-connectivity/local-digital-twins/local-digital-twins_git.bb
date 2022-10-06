@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/local-digital-twins;protocol=https;bra
            file://service.template \
            "
 
-SRCREV = "667004df8bda12b8ed8188b904fc13e0c6572ccc"
+SRCREV = "${AUTOREV}"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -39,8 +39,8 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/local-digital-twins"
 RPROVIDES:${PN} += "kanto/local-digital-twins"
 
-BUILD_VERSION = "0.1.0-M2"
-export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+# BUILD_VERSION = "0.1.0-M2"
+# export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${LDT_BIN_DD}"
