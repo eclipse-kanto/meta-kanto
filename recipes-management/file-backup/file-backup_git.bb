@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/file-backup;protocol=https;branch=main
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "49e90b0ccef213008473bf244dff4671b382848a"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -36,6 +36,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/file-backup"
 RPROVIDES:${PN} += "kanto/file-backup"
+
+BUILD_VERSION = "0.1.0-M2"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${FB_BIN_DD}"

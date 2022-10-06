@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/suite-bootstrapping;protocol=https;bra
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "24cb31af78ce27b365a1b120c8f6a95d188695cc"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -38,6 +38,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/suite-bootstrapping"
 RPROVIDES:${PN} += "kanto/suite-bootstrapping"
+
+BUILD_VERSION = "0.1.0-M2"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${SB_BIN_DD}"
