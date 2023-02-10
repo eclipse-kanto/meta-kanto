@@ -19,6 +19,17 @@ jobs:
     runs-on: ubuntu-20.04
     timeout-minutes: 720
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+      - name: Free space info
+        run: |
+          echo "Free space:"
+          df -h
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -29,6 +40,10 @@ jobs:
         run: git clone -b kirkstone https://github.com/openembedded/meta-openembedded.git
       - name: Clone meta-virtualization
         run: git clone -b kirkstone https://github.com/lgirdk/meta-virtualization.git
+      - name: Add dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install diffstat
       - name: Initialize build
         run: |
           source poky/oe-init-build-env build
@@ -70,3 +85,7 @@ jobs:
         run: |
           source poky/oe-init-build-env build
           bitbake container-management
+      - name: Free space info
+        run: |
+          echo "Free space:"
+          df -h
