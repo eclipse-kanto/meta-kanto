@@ -35,11 +35,11 @@ jobs:
         with:
           path: meta-kanto
       - name: Clone poky
-        run: git clone -b kirkstone git://git.yoctoproject.org/poky
+        run: git clone -b mickledore git://git.yoctoproject.org/poky
       - name: Clone meta-openembedded
-        run: git clone -b kirkstone https://github.com/openembedded/meta-openembedded.git
+        run: git clone -b mickledore https://github.com/openembedded/meta-openembedded.git
       - name: Clone meta-virtualization
-        run: git clone -b kirkstone https://github.com/lgirdk/meta-virtualization.git
+        run: git clone -b mickledore https://github.com/lgirdk/meta-virtualization.git
       - name: Add dependencies
         run: |
           sudo apt-get update
