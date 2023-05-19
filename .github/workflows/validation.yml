@@ -1,0 +1,104 @@
+name: Validation
+
+on:
+  push:
+    branches:
+      - main
+      - kirkstone
+    paths-ignore:
+      - "**/*.md"
+
+  pull_request:
+    branches:
+      - main
+      - kirkstone
+    paths-ignore:
+      - "**/*.md"
+
+jobs:
+  build:
+    name: meta-kanto Build
+    runs-on: ubuntu-20.04
+    timeout-minutes: 720
+    steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@v6
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+      - name: Free space info
+        run: |
+          echo "Free space:"
+          df -h
+      - name: Get branch name (merge)
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: if [ ${GITHUB_REF#refs/heads/} == "main" ]; then echo "BRANCH_NAME=$(echo "mickledore")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_ENV; fi
+        id: get_branch
+      - name: Get branch name (pull request)
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: if [ ${{ github.event.pull_request.base.ref }} == "main" ]; then echo "BRANCH_NAME=$(echo "mickledore")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${{ github.event.pull_request.base.ref }})" >>$GITHUB_ENV; fi
+        id: get_branch_pr
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: meta-kanto
+          ref: ${{ github.ref }}
+      - name: Clone poky
+        run: git clone -b ${{ env.BRANCH_NAME }} git://git.yoctoproject.org/poky
+      - name: Clone meta-openembedded
+        run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/openembedded/meta-openembedded.git
+      - name: Clone meta-virtualization
+        run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/lgirdk/meta-virtualization.git
+      - name: Add dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install diffstat
+      - name: Initialize build
+        run: |
+          source poky/oe-init-build-env build
+          bitbake-layers add-layer ../meta-openembedded/meta-oe
+          bitbake-layers add-layer ../meta-openembedded/meta-python
+          bitbake-layers add-layer ../meta-openembedded/meta-networking
+          bitbake-layers add-layer ../meta-openembedded/meta-filesystems
+          bitbake-layers add-layer ../meta-virtualization
+          bitbake-layers add-layer ../meta-kanto
+      - name: Build suite connector
+        run: |
+          source poky/oe-init-build-env build
+          bitbake suite-connector
+      - name: Build bootstrapping
+        run: |
+          source poky/oe-init-build-env build
+          bitbake suite-bootstrapping
+      - name: Build local digital twins
+        run: |
+          source poky/oe-init-build-env build
+          bitbake local-digital-twins
+      - name: Build file backup
+        run: |
+          source poky/oe-init-build-env build
+          bitbake file-backup
+      - name: Build file upload
+        run: |
+          source poky/oe-init-build-env build
+          bitbake file-upload
+      - name: Build software update
+        run: |
+          source poky/oe-init-build-env build
+          bitbake software-update
+      - name: Build system metrics
+        run: |
+          source poky/oe-init-build-env build
+          bitbake system-metrics
+      - name: Build container management
+        run: |
+          source poky/oe-init-build-env build
+          bitbake container-management
+      - name: Free space info
+        run: |
+          echo "Free space:"
+          df -h
