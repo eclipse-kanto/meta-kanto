@@ -4,12 +4,14 @@ on:
   push:
     branches:
       - main
+      - kirkstone
     paths-ignore:
       - "**/*.md"
 
   pull_request:
     branches:
       - main
+      - kirkstone
     paths-ignore:
       - "**/*.md"
 
@@ -30,16 +32,27 @@ jobs:
         run: |
           echo "Free space:"
           df -h
+      - name: Get branch name (merge)
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: if [ ${GITHUB_REF#refs/heads/} == "main" ]; then echo "BRANCH_NAME=$(echo "mickledore")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_ENV; fi
+        id: get_branch
+      - name: Get branch name (pull request)
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: if [ ${{ github.event.pull_request.base.ref }} == "main" ]; then echo "BRANCH_NAME=$(echo "mickledore")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${{ github.event.pull_request.base.ref }})" >>$GITHUB_ENV; fi
+        id: get_branch_pr
       - name: Checkout
         uses: actions/checkout@v2
         with:
           path: meta-kanto
+          ref: ${{ github.ref }}
       - name: Clone poky
-        run: git clone -b mickledore git://git.yoctoproject.org/poky
+        run: git clone -b ${{ env.BRANCH_NAME }} git://git.yoctoproject.org/poky
       - name: Clone meta-openembedded
-        run: git clone -b mickledore https://github.com/openembedded/meta-openembedded.git
+        run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/openembedded/meta-openembedded.git
       - name: Clone meta-virtualization
-        run: git clone -b mickledore https://github.com/lgirdk/meta-virtualization.git
+        run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/lgirdk/meta-virtualization.git
       - name: Add dependencies
         run: |
           sudo apt-get update
