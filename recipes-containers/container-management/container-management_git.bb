@@ -10,7 +10,6 @@ SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;br
 
 SRCREV = "${AUTOREV}"
 
-
 PV = "0.1.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/container-management"
