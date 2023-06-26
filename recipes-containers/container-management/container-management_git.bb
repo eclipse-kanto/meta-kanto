@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;br
            file://service.template \
            "
 
-SRCREV = "65e00358fa5aed1792059488a80fe755b36a8191"
+SRCREV = "${AUTOREV}"
 
 PV = "0.1.0-git${SRCPV}"
 

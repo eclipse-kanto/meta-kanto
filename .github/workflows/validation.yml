@@ -53,6 +53,8 @@ jobs:
         run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/openembedded/meta-openembedded.git
       - name: Clone meta-virtualization
         run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/lgirdk/meta-virtualization.git
+      - name: Clone meta-lts-mixins
+        run: git clone -b ${{ env.BRANCH_NAME }}/go git://git.yoctoproject.org/meta-lts-mixins
       - name: Add dependencies
         run: |
           sudo apt-get update
@@ -64,6 +66,7 @@ jobs:
           bitbake-layers add-layer ../meta-openembedded/meta-python
           bitbake-layers add-layer ../meta-openembedded/meta-networking
           bitbake-layers add-layer ../meta-openembedded/meta-filesystems
+          bitbake-layers add-layer ../meta-lts-mixins
           bitbake-layers add-layer ../meta-virtualization
           bitbake-layers add-layer ../meta-kanto
       - name: Build suite connector
