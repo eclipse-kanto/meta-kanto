@@ -1,0 +1,14 @@
+[Unit]
+Description=Eclipse Kanto - Update Manager
+Documentation=https://eclipse.org/kanto/docs/
+After=network.target mosquitto.service
+Requires=network.target
+Requires=mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=@UM_BIN_DD@/update-manager -configFile @UM_CFG_DD@/update-manager/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
