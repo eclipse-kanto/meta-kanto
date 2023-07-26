@@ -1,0 +1,13 @@
+{
+    "log": {
+      "logFile": "@UM_LOG_DD@/update-manager/update-manager.log"
+    },
+    "domain": "device",
+    "agents": {
+        "containers": {
+            "name": "containers",
+            "rebootRequired": false,
+            "readTimeout": "30s"
+        }
+    }
+}

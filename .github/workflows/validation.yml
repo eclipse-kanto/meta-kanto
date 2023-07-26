@@ -90,6 +90,10 @@ jobs:
         run: |
           source poky/oe-init-build-env build
           bitbake software-update
+      - name: Build update manager
+        run: |
+          source poky/oe-init-build-env build
+          bitbake update-manager
       - name: Build system metrics
         run: |
           source poky/oe-init-build-env build
