@@ -1,6 +1,6 @@
 {
     "log": {
-      "logFile": "@UM_LOG_DD@/update-manager/update-manager.log"
+      "logFile": "@UM_LOG_DD@/update-manager/kanto-update-manager.log"
     },
     "domain": "device",
     "agents": {
