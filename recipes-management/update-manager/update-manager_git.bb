@@ -28,9 +28,9 @@ SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','kanto
 do_compile[network] = "1"
 
 FILES:${PN} += "${UM_SYSUNIT_DD}/kanto-update-manager.service"
-FILES:${PN} += "${UM_BIN_DD}/update-manager"
+FILES:${PN} += "${UM_BIN_DD}/kanto-update-manager"
 # ensure all additional resources are properly packed in the resulting package if provided
-FILES:${PN} += "${UM_CFG_DD}/update-manager/config.json"
+FILES:${PN} += "${UM_CFG_DD}/kanto-update-manager/config.json"
 
 RDEPENDS:${PN} += "mosquitto"
 
@@ -46,10 +46,10 @@ do_install() {
     install -d ${D}${UM_SYSUNIT_DD}
 
     # update-manager
-    install -d ${D}${UM_CFG_DD}/update-manager
+    install -d ${D}${UM_CFG_DD}/kanto-update-manager
 
     # config.json
-    install -m 0644 ${WORKDIR}/config.json ${D}${UM_CFG_DD}/update-manager
+    install -m 0644 ${WORKDIR}/config.json ${D}${UM_CFG_DD}/kanto-update-manager
 
     # service.template as service
     install -m 0644 ${WORKDIR}/service.template ${D}${UM_SYSUNIT_DD}/kanto-update-manager.service
@@ -61,6 +61,6 @@ do_install() {
 
     # fill in the config.json template with the custom configs provided
     sed -e 's,@UM_LOG_DD@,${UM_LOG_DD},g' \
-        -i ${D}${UM_CFG_DD}/update-manager/config.json
+        -i ${D}${UM_CFG_DD}/kanto-update-manager/config.json
   fi
 }
