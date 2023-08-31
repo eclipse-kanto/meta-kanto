@@ -7,7 +7,7 @@ Requires=mosquitto.service
 
 [Service]
 Type=simple
-ExecStart=@UM_BIN_DD@/update-manager -config-file @UM_CFG_DD@/update-manager/config.json
+ExecStart=@UM_BIN_DD@/kanto-update-manager -config-file @UM_CFG_DD@/kanto-update-manager/config.json
 Restart=always
 
 [Install]

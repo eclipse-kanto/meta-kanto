@@ -22,15 +22,15 @@ inherit systemd
 
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES','systemd','${PN}','',d)}"
-SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','update-manager.service','',d)}"
+SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES','systemd','kanto-update-manager.service','',d)}"
 
 # workaround for network issue
 do_compile[network] = "1"
 
-FILES:${PN} += "${UM_SYSUNIT_DD}/update-manager.service"
-FILES:${PN} += "${UM_BIN_DD}/update-manager"
+FILES:${PN} += "${UM_SYSUNIT_DD}/kanto-update-manager.service"
+FILES:${PN} += "${UM_BIN_DD}/kanto-update-manager"
 # ensure all additional resources are properly packed in the resulting package if provided
-FILES:${PN} += "${UM_CFG_DD}/update-manager/config.json"
+FILES:${PN} += "${UM_CFG_DD}/kanto-update-manager/config.json"
 
 RDEPENDS:${PN} += "mosquitto"
 
@@ -40,27 +40,27 @@ RPROVIDES:${PN} += "kanto/update-manager"
 do_install() {
   install -d "${D}/${UM_BIN_DD}"
 
-  install -m 0755 "${GO_BUILD_BINDIR}/update-manager" "${D}${UM_BIN_DD}/update-manager"
+  install -m 0755 "${GO_BUILD_BINDIR}/update-manager" "${D}${UM_BIN_DD}/kanto-update-manager"
 
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
     install -d ${D}${UM_SYSUNIT_DD}
 
     # update-manager
-    install -d ${D}${UM_CFG_DD}/update-manager
+    install -d ${D}${UM_CFG_DD}/kanto-update-manager
 
     # config.json
-    install -m 0644 ${WORKDIR}/config.json ${D}${UM_CFG_DD}/update-manager
+    install -m 0644 ${WORKDIR}/config.json ${D}${UM_CFG_DD}/kanto-update-manager
 
     # service.template as service
-    install -m 0644 ${WORKDIR}/service.template ${D}${UM_SYSUNIT_DD}/update-manager.service
+    install -m 0644 ${WORKDIR}/service.template ${D}${UM_SYSUNIT_DD}/kanto-update-manager.service
 
     # fill in the update-manager systemd service template with the custom configs provided
     sed -e 's,@UM_BIN_DD@,${UM_BIN_DD},g' \
         -e 's,@UM_CFG_DD@,${UM_CFG_DD},g' \
-        -i ${D}${UM_SYSUNIT_DD}/update-manager.service
+        -i ${D}${UM_SYSUNIT_DD}/kanto-update-manager.service
 
     # fill in the config.json template with the custom configs provided
     sed -e 's,@UM_LOG_DD@,${UM_LOG_DD},g' \
-        -i ${D}${UM_CFG_DD}/update-manager/config.json
+        -i ${D}${UM_CFG_DD}/kanto-update-manager/config.json
   fi
 }
