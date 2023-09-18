@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/suite-connector;protocol=https;branch=
            file://service.template \
            "
 
-SRCREV = "90acb329ee4dcde307db168aa450bdf465437736"
+SRCREV = "5909123155229abb93838f782d9867f814a043ee"
 
 PV = "0.1.0-git${SRCPV}"
 
