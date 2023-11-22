@@ -70,6 +70,10 @@ jobs:
         run: |
           source poky/oe-init-build-env build
           bitbake suite-connector
+      - name: Build aws connector
+        run: |
+          source poky/oe-init-build-env build
+          bitbake aws-connector
       - name: Build bootstrapping
         run: |
           source poky/oe-init-build-env build
