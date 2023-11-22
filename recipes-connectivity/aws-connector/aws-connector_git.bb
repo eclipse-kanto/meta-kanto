@@ -13,7 +13,7 @@ SRCREV = "${AUTOREV}"
 PV = "0.1.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/aws-connector"
-GO_INSTALL = "${GO_IMPORT}/cmd/connector"
+GO_INSTALL = "${GO_IMPORT}/cmd/aws-connector"
 
 require aws-connector.inc
 
@@ -42,7 +42,7 @@ RPROVIDES:${PN} += "kanto/aws-connector"
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
  
-  install -m 0755 "${GO_BUILD_BINDIR}/connector" "${D}${SC_BIN_DD}/aws-connector"
+  install -m 0755 "${GO_BUILD_BINDIR}/aws-connector" "${D}${SC_BIN_DD}/aws-connector"
   
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
     install -d ${D}${SC_SYSUNIT_DD}
@@ -51,7 +51,7 @@ do_install() {
     install -d ${D}${SC_CFG_DD}/aws-connector
     
     # iothub.crt
-    install -m 0644 ${S}/src/${GO_IMPORT}/cmd/connector/aws.crt ${D}${SC_CFG_DD}/aws-connector
+    install -m 0644 ${S}/src/${GO_IMPORT}/cmd/aws-connector/aws.crt ${D}${SC_CFG_DD}/aws-connector
     
     # config.json
     install -m 0644 ${WORKDIR}/config.json ${D}${SC_CFG_DD}/aws-connector
@@ -70,4 +70,3 @@ do_install() {
         -i ${D}${SC_CFG_DD}/aws-connector/config.json
   fi
 }
-
