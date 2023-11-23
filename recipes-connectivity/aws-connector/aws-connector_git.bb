@@ -1,4 +1,4 @@
-DESCRIPTION = "Eclipse Kanto - Suite Connector"
+DESCRIPTION = "Eclipse Kanto - AWS Connector"
 
 LICENSE = "EPL-2.0 | Apache-2.0"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=54cd967551e55d39f55006d3344c22fc"

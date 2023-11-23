@@ -1,5 +1,5 @@
-# Common configuration variables to set the binaries and resources allocation directories for Eclipse Kanto suite connector component
-# The destination directory where the required configuration files for the proper connectivity establishment of the suite connector will be placed
+# Common configuration variables to set the binaries and resources allocation directories for Eclipse Kanto AWS connector component
+# The destination directory where the required configuration files for the proper connectivity establishment of the AWS connector will be placed
 SC_CFG_DD ?= "${sysconfdir}"
 # The destination directory where the generated service file will be placed
 SC_SYSUNIT_DD ?= "${systemd_unitdir}/system"
