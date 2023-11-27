@@ -1,0 +1,4 @@
+{
+    "caCert": "@SC_CFG_DD@/aws-connector/aws.crt",
+    "logFile": "@SC_LOG_DD@/aws-connector/aws-connector.log"
+}
