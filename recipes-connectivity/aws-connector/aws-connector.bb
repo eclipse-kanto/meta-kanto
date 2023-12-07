@@ -42,7 +42,7 @@ RPROVIDES:${PN} += "kanto/aws-connector"
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
  
-  install -m 0755 "${GO_BUILD_BINDIR}/connector" "${D}${SC_BIN_DD}/aws-connector"
+  install -m 0755 "${GO_BUILD_BINDIR}/aws-connector" "${D}${SC_BIN_DD}/aws-connector"
   
   if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
     install -d ${D}${SC_SYSUNIT_DD}
