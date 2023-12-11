@@ -1,0 +1,14 @@
+[Unit]
+Description=Eclipse Kanto - AWS Connector
+Documentation=https://eclipse.org/kanto/docs/
+After=network.target mosquitto.service
+Requires=network.target
+Requires=mosquitto.service
+
+[Service]
+Type=simple
+ExecStart=@SC_BIN_DD@/aws-connector -configFile @SC_CFG_DD@/aws-connector/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
