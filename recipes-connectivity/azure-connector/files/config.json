@@ -1,0 +1,4 @@
+{
+    "caCert": "@SC_CFG_DD@/azure-connector/iothub.crt",
+    "logFile": "@SC_LOG_DD@/azure-connector/azure-connector.log"
+}

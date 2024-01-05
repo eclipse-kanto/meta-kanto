@@ -69,6 +69,10 @@ jobs:
           bitbake-layers add-layer ../meta-lts-mixins
           bitbake-layers add-layer ../meta-virtualization
           bitbake-layers add-layer ../meta-kanto
+      - name: Build azure connector
+        run: |
+          source poky/oe-init-build-env build
+          bitbake azure-connector
       - name: Build AWS connector
         run: |
           source poky/oe-init-build-env build
