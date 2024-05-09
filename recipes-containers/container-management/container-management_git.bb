@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;br
            file://service.template \
            "
 
-SRCREV = "e7fb861984deba4b7e7ba526c04ff695b1367cdc"
+SRCREV = "${AUTOREV}"
 
 PV = "0.1.0-git${SRCPV}"
 
@@ -47,13 +47,6 @@ FILES:${PN} += "${CM_SYSUNIT_DD}/container-management.service"
 FILES:${PN} += "${CM_BIN_DD}/container-management ${CM_BIN_DD}/kanto-cm"
 # ensure all additional resources are properly packed in the resulting package if provided
 FILES:${PN} += "${CM_CFG_DD}/container-management/config.json"
-
-VERSION_PKG = "github.com/eclipse-kanto/container-management/containerm"
-BUILD_TIME = "${@time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}"
-BUILD_VERSION = "0.1.0-M4"
-BUILD_REVISION = "${@'${SRCREV}'[:7]}"
-
-export GO_EXTRA_LDFLAGS="-X ${VERSION_PKG}/version.GitCommit=${BUILD_REVISION} -X ${VERSION_PKG}/version.ProjectVersion=${BUILD_VERSION} -X ${VERSION_PKG}/version.APIVersion=${BUILD_VERSION} -X ${VERSION_PKG}/version.BuildTime=${BUILD_TIME}"
 
 do_install() {
   install -d ${D}/${CM_BIN_DD}
