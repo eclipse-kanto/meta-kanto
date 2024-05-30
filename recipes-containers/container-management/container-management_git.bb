@@ -17,6 +17,9 @@ GO_INSTALL = "${GO_IMPORT}/containerm/daemon \
               ${GO_IMPORT}/containerm/cli \
               "
 
+GO_LINKSHARED = ""
+GOBUILDFLAGS:remove = "-buildmode=pie"
+
 require container-management.inc
 
 inherit go-mod
