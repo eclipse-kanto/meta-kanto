@@ -78,10 +78,6 @@ jobs:
         run: |
           source poky/oe-init-build-env build
           bitbake suite-connector
-      - name: Build bootstrapping
-        run: |
-          source poky/oe-init-build-env build
-          bitbake suite-bootstrapping
       - name: Build local digital twins
         run: |
           source poky/oe-init-build-env build
