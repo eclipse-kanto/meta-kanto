@@ -35,12 +35,12 @@ jobs:
       - name: Get branch name (merge)
         if: github.event_name != 'pull_request'
         shell: bash
-        run: if [ ${GITHUB_REF#refs/heads/} == "main" ]; then echo "BRANCH_NAME=$(echo "nanbield")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_ENV; fi
+        run: if [ ${GITHUB_REF#refs/heads/} == "main" ]; then echo "BRANCH_NAME=$(echo "scarthgap")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_ENV; fi
         id: get_branch
       - name: Get branch name (pull request)
         if: github.event_name == 'pull_request'
         shell: bash
-        run: if [ ${{ github.event.pull_request.base.ref }} == "main" ]; then echo "BRANCH_NAME=$(echo "nanbield")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${{ github.event.pull_request.base.ref }})" >>$GITHUB_ENV; fi
+        run: if [ ${{ github.event.pull_request.base.ref }} == "main" ]; then echo "BRANCH_NAME=$(echo "scarthgap")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${{ github.event.pull_request.base.ref }})" >>$GITHUB_ENV; fi
         id: get_branch_pr
       - name: Checkout
         uses: actions/checkout@v2
