@@ -39,6 +39,9 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/aws-connector"
 RPROVIDES:${PN} += "kanto/aws-connector"
 
+BUILD_VERSION = "1.0.0"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
  

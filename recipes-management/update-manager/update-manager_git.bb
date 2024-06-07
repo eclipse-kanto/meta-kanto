@@ -37,8 +37,8 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/update-manager"
 RPROVIDES:${PN} += "kanto/update-manager"
 
-# BUILD_VERSION = "0.1.0-M2"
-# export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+BUILD_VERSION = "1.0.0"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${UM_BIN_DD}"

@@ -39,8 +39,8 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/local-digital-twins"
 RPROVIDES:${PN} += "kanto/local-digital-twins"
 
-# BUILD_VERSION = "0.1.0-M2"
-# export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+BUILD_VERSION = "1.0.0"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${LDT_BIN_DD}"
