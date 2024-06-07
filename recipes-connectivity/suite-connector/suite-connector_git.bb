@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/suite-connector;protocol=https;branch=
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "938ae1560e09058463972061de2a63275fa32d46"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/suite-connector"
 GO_INSTALL = "${GO_IMPORT}/cmd/connector"

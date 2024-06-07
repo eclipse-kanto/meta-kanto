@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;br
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "4b2cd25bd9f6f78c480677994b20ab7b6e46c39c"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/container-management"
 GO_INSTALL = "${GO_IMPORT}/containerm/daemon \

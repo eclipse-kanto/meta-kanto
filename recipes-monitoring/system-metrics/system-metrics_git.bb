@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/system-metrics;protocol=https;branch=m
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "6be7a9b7dcd26df1687785ada267211ff7851435"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/system-metrics"
 GO_INSTALL = "${GO_IMPORT}/cmd/metrics"

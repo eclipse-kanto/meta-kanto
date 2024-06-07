@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/file-backup;protocol=https;branch=main
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "4ea460c50aeba1d1706528927b1564fe37c425dc"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/file-backup"
 GO_INSTALL = "${GO_IMPORT}"

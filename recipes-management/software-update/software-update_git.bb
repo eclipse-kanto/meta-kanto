@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/software-update;protocol=https;branch=
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "74b2b454b2e66c212f450c822f9f7394a6fc30e1"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/software-update"
 GO_INSTALL = "${GO_IMPORT}/cmd/software-update"
