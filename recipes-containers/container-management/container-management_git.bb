@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;br
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "4b2cd25bd9f6f78c480677994b20ab7b6e46c39c"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/container-management"
 GO_INSTALL = "${GO_IMPORT}/containerm/daemon \
@@ -51,11 +51,11 @@ FILES:${PN} += "${CM_BIN_DD}/container-management ${CM_BIN_DD}/kanto-cm"
 # ensure all additional resources are properly packed in the resulting package if provided
 FILES:${PN} += "${CM_CFG_DD}/container-management/config.json"
 
-# VERSION_PKG = "github.com/eclipse-kanto/container-management/containerm"
-# BUILD_TIME = "${@time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}"
-# BUILD_VERSION = "0.1.0-M2"
-# BUILD_REVISION = "${@'${SRCREV}'[:7]}"
-# export GO_EXTRA_LDFLAGS="-X ${VERSION_PKG}/version.GitCommit=${BUILD_REVISION} -X ${VERSION_PKG}/version.ProjectVersion=${BUILD_VERSION} -X ${VERSION_PKG}/version.APIVersion=${BUILD_VERSION} -X ${VERSION_PKG}/version.BuildTime=${BUILD_TIME}"
+VERSION_PKG = "github.com/eclipse-kanto/container-management/containerm"
+BUILD_TIME = "${@time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime())}"
+BUILD_VERSION = "1.0.0"
+BUILD_REVISION = "${@'${SRCREV}'[:7]}"
+export GO_EXTRA_LDFLAGS="-X ${VERSION_PKG}/version.GitCommit=${BUILD_REVISION} -X ${VERSION_PKG}/version.ProjectVersion=${BUILD_VERSION} -X ${VERSION_PKG}/version.APIVersion=${BUILD_VERSION} -X ${VERSION_PKG}/version.BuildTime=${BUILD_TIME}"
 
 do_install() {
   install -d ${D}/${CM_BIN_DD}
