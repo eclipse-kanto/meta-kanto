@@ -38,6 +38,9 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/system-metrics"
 RPROVIDES:${PN} += "kanto/system-metrics"
 
+BUILD_VERSION = "1.0.0"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+
 do_install() {
   install -d "${D}/${SM_BIN_DD}"
 

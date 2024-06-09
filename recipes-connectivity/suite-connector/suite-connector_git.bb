@@ -40,6 +40,9 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/suite-connector"
 RPROVIDES:${PN} += "kanto/suite-connector"
 
+BUILD_VERSION = "1.0.0"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
  
