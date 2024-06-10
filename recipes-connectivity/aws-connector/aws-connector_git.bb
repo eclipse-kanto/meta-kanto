@@ -8,9 +8,9 @@ SRC_URI = "git://github.com/eclipse-kanto/aws-connector;protocol=https;branch=ma
            file://service.template \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "05fcdc45e5829930ca7b32bb4f03c821eeaa1eef"
 
-PV = "0.1.0-git${SRCPV}"
+PV = "1.0.0-git${SRCPV}"
 
 GO_IMPORT = "github.com/eclipse-kanto/aws-connector"
 GO_INSTALL = "${GO_IMPORT}/cmd/aws-connector"
@@ -38,6 +38,9 @@ RDEPENDS:${PN} += "mosquitto"
 
 PROVIDES:${PN} += "kanto/aws-connector"
 RPROVIDES:${PN} += "kanto/aws-connector"
+
+BUILD_VERSION = "1.0.0"
+export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
