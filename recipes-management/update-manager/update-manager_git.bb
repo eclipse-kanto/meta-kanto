@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/update-manager;protocol=https;branch=m
            file://service.template \
            "
 
-SRCREV = "0b23c81367480892efd99c9fb086bad135d2e9e2"
+SRCREV = "${AUTOREV}"
 
 PV = "1.0.0-git${SRCPV}"
 
@@ -37,8 +37,8 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/update-manager"
 RPROVIDES:${PN} += "kanto/update-manager"
 
-BUILD_VERSION = "1.0.0"
-export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+#BUILD_VERSION = "1.0.0"
+#export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${UM_BIN_DD}"
