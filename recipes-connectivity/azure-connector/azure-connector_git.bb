@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/eclipse-kanto/azure-connector;protocol=https;branch=
            file://service.template \
            "
 
-SRCREV = "c610acb7a3ea92afdde45b25bd4c197965266f95"
+SRCREV = "${AUTOREV}"
 
 PV = "1.0.0-git${SRCPV}"
 
@@ -39,8 +39,8 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/azure-connector"
 RPROVIDES:${PN} += "kanto/azure-connector"
 
-BUILD_VERSION = "1.0.0"
-export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+#BUILD_VERSION = "1.0.0"
+#export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
 
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
