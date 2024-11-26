@@ -39,6 +39,9 @@ RDEPENDS:${PN} += "mosquitto"
 PROVIDES:${PN} += "kanto/aws-connector"
 RPROVIDES:${PN} += "kanto/aws-connector"
 
+#BUILD_VERSION = "1.0.0"
+#export GO_EXTRA_LDFLAGS="-X main.version=${BUILD_VERSION}"
+
 do_install() {
   install -d "${D}/${SC_BIN_DD}"
  
@@ -50,7 +53,7 @@ do_install() {
     # aws-connector
     install -d ${D}${SC_CFG_DD}/aws-connector
     
-    # iothub.crt
+    # aws.crt
     install -m 0644 ${S}/src/${GO_IMPORT}/cmd/aws-connector/aws.crt ${D}${SC_CFG_DD}/aws-connector
     
     # config.json
