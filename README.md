@@ -29,9 +29,26 @@ URI: git://git.yoctoproject.org/meta-virtualization
 
 # Table of Contents
 
-1. [Adding the meta-kanto layer to your build](#adding-the-meta-kanto-layer-to-your-build)
-2. [Required image configurations](#required-image-configurations)
-3. [Example image configuration](#example-image-configuration)
+1. [Adding the required go version to your build](#adding-the-required-go-version-to-your-build)
+2. [Adding the meta-kanto layer to your build](#adding-the-meta-kanto-layer-to-your-build)
+3. [Required image configurations](#required-image-configurations)
+4. [Example image configuration](#example-image-configuration)
+
+## Adding the required go version to your build
+
+The go version in poky receipes needs to be upgraded to the required one for Eclipse Kanto
+since hardknott yocto version by default has go version 1.16.15.
+
+The required go version can be found in the go.mod file of each Eclipse Kanto
+repositories which needs to be included in your build.
+
+Below described simple steps to upgrade go version
+
+1. Clone the poky receipies: 
+    git clone https://git.yoctoproject.org/poky
+2. Checkout the required go version poky branch:
+    git ckecout <required_go_version_poky_branch>
+3. Replace the go version in path "poky\meta\recipes-devtools" with required one
 
 ## Adding the meta-kanto layer to your build
 
