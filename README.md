@@ -40,7 +40,7 @@ Below described simple steps to upgrade go version
     git clone https://git.yoctoproject.org/poky
 
 2. Checkout the poky branch that includes the required Go version:
-    git ckecout <required_go_version_poky_branch>
+    git checkout <required_go_version_poky_branch>
 
 3. Replace the Go version in your project build path "poky\meta\recipes-devtools" with
    checked out required Go version
