@@ -28,7 +28,7 @@ bitbake-layers add-layer meta-kanto
 
 ## Adding the required go version to your build
 
-The Go version in the Poky recipes needs to be upgraded to the required version for Eclipse Kanto,
+The Go version in the poky recipes needs to be upgraded to the required version for Eclipse Kanto to build,
 as the default Go version in the Hardknott Yocto release is 1.16.15.
 
 The required Go version for Eclipse Kanto can be found in the go.mod file of each Eclipse Kanto
@@ -36,7 +36,7 @@ repository that you intend to include in your build.
 
 Below described simple steps to upgrade go version
 
-1. Clone the poky receipies in separate dictonary: 
+1. Clone the poky recipes branch which has the required Go version in separate dictonary:
     git clone https://git.yoctoproject.org/poky
 
 2. Checkout the poky branch that includes the required Go version:
@@ -65,12 +65,13 @@ MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS += "kernel-modules"
 
 ## Adding cloud connectivity and virtualization dependencies
 
-  Required for enabling the cloud connectivity and virtualization.
-  Could be used as a single dependency if only suite connector
-  is needed to be built.
+Required for enabling the cloud connectivity and virtualization.
+Could be used as a single dependency if only suite connector
+is needed to be built.
 
-  URI: git://github.com/openembedded/meta-openembedded.git layers:
-* meta-networking
+URI: git://github.com/openembedded/meta-openembedded.git layers:
+
+  * meta-networking
 
 Required for enabling edge containerization
 
@@ -87,6 +88,7 @@ To do that, add in the image configuration file the following line:
     DISTRO_FEATURES:append = " virtualization"
 
 For further fine-tuning and options see the meta-virtualization README.
+https://git.yoctoproject.org/meta-virtualization/tree/README?h=hardknott
 
 It also requires the kernel modules to be included in your target Yocto image.
 To do that, add in the kernel module configuration file the following line:
