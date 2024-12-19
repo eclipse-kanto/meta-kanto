@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - main
-      - kirkstone
+      - hardknott
     paths-ignore:
       - "**/*.md"
 
   pull_request:
     branches:
       - main
-      - kirkstone
+      - hardknott
     paths-ignore:
       - "**/*.md"
 
@@ -35,12 +35,12 @@ jobs:
       - name: Get branch name (merge)
         if: github.event_name != 'pull_request'
         shell: bash
-        run: if [ ${GITHUB_REF#refs/heads/} == "main" ]; then echo "BRANCH_NAME=$(echo "scarthgap")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_ENV; fi
+        run: if [ ${GITHUB_REF#refs/heads/} == "main" ]; then echo "BRANCH_NAME=$(echo "hardknott")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_ENV; fi
         id: get_branch
       - name: Get branch name (pull request)
         if: github.event_name == 'pull_request'
         shell: bash
-        run: if [ ${{ github.event.pull_request.base.ref }} == "main" ]; then echo "BRANCH_NAME=$(echo "scarthgap")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${{ github.event.pull_request.base.ref }})" >>$GITHUB_ENV; fi
+        run: if [ ${{ github.event.pull_request.base.ref }} == "main" ]; then echo "BRANCH_NAME=$(echo "hardknott")" >>$GITHUB_ENV; else echo "BRANCH_NAME=$(echo ${{ github.event.pull_request.base.ref }})" >>$GITHUB_ENV; fi
         id: get_branch_pr
       - name: Checkout
         uses: actions/checkout@v2
@@ -53,6 +53,16 @@ jobs:
         run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/openembedded/meta-openembedded.git
       - name: Clone meta-virtualization
         run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/lgirdk/meta-virtualization.git
+      - name: go recipes update
+        run: |
+          git clone --no-checkout https://git.yoctoproject.org/poky go_patch
+          cd go_patch
+          git sparse-checkout init --cone
+          git sparse-checkout set meta/recipes-devtools/go
+          git checkout mickledore
+          cd ../
+          rm -rf poky/meta/recipes-devtools/go
+          cp -r go_patch/meta/recipes-devtools/go poky/meta/recipes-devtools/go
       - name: Add dependencies
         run: |
           sudo apt-get update

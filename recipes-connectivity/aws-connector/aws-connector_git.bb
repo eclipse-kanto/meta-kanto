@@ -50,7 +50,7 @@ do_install() {
     # aws-connector
     install -d ${D}${SC_CFG_DD}/aws-connector
     
-    # iothub.crt
+    # aws.crt
     install -m 0644 ${S}/src/${GO_IMPORT}/cmd/aws-connector/aws.crt ${D}${SC_CFG_DD}/aws-connector
     
     # config.json
