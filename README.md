@@ -28,23 +28,26 @@ bitbake-layers add-layer meta-kanto
 
 ## Adding the required go version to your build
 
-The Go version in the poky recipes needs to be upgraded to the required version for Eclipse Kanto to build,
-as the default Go version in the Hardknott Yocto release is 1.16.15.
+The Go version in the poky recipes needs to be upgraded to the required version for 
+building Eclipse Kanto, as the default Go version in the hardknott Yocto release is 1.16.15.
 
-The required Go version for Eclipse Kanto can be found in the go.mod file of each Eclipse Kanto
-repository that you intend to include in your build.
+The required Go version for buidling Eclipse Kanto can be found in the go.mod file of each
+Eclipse Kanto repository that you intend to include in your build.
 
-Below described simple steps to upgrade go version
+For example, if Go version 1.20.7 is required for building Eclipse Kanto then,
+the Go files in the path poky\meta\recipes-devtools\go has to be replaced with 1.20.7.
+To do this, run the below commands
 
-1. Clone the poky recipes branch which has the required Go version in separate dictonary:
-    git clone https://git.yoctoproject.org/poky
-
-2. Checkout the poky branch that includes the required Go version:
-    git checkout <required_go_version_poky_branch>
-
-3. Replace the Go version in your project build path "poky\meta\recipes-devtools" with
-   checked out required Go version
-
+```
+git clone --no-checkout https://git.yoctoproject.org/poky go_patch
+cd go_patch
+git sparse-checkout init --cone
+git sparse-checkout set meta/recipes-devtools/go
+git checkout mickledore
+cd ../
+rm -rf poky/meta/recipes-devtools/go
+cp -r go_patch/meta/recipes-devtools/go poky/meta/recipes-devtools/go
+```
 
 ## Required image configurations
 

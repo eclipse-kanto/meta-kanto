@@ -53,6 +53,16 @@ jobs:
         run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/openembedded/meta-openembedded.git
       - name: Clone meta-virtualization
         run: git clone -b ${{ env.BRANCH_NAME }} https://github.com/lgirdk/meta-virtualization.git
+      - name: go recipes update
+        run: |
+          git clone --no-checkout https://git.yoctoproject.org/poky go_patch
+          cd go_patch
+          git sparse-checkout init --cone
+          git sparse-checkout set meta/recipes-devtools/go
+          git checkout mickledore
+          cd ../
+          rm -rf poky/meta/recipes-devtools/go
+          cp -r go_patch/meta/recipes-devtools/go poky/meta/recipes-devtools/go
       - name: Add dependencies
         run: |
           sudo apt-get update
