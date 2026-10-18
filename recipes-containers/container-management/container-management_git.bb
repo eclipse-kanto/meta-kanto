@@ -1,9 +1,9 @@
 DESCRIPTION = "Eclipse Kanto - Container Management"
 
 LICENSE = "EPL-2.0 | Apache-2.0"
-LIC_FILES_CHKSUM = "file://src/github.com/eclipse-kanto/container-management/LICENSE;md5=54cd967551e55d39f55006d3344c22fc"
+LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=54cd967551e55d39f55006d3344c22fc"
 
-SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;branch=main \
+SRC_URI = "git://github.com/eclipse-kanto/container-management;protocol=https;branch=main;destsuffix=${GO_SRCURI_DESTSUFFIX} \
            file://config.json \
            file://service.template \
            "
@@ -70,11 +70,11 @@ do_install() {
 
     # config.json
     install -d ${D}${CM_CFG_DD}/container-management
-    install -m 0644 ${WORKDIR}/config.json ${D}${CM_CFG_DD}/container-management/config.json
+    install -m 0644 ${UNPACKDIR}/config.json ${D}${CM_CFG_DD}/container-management/config.json
 
     # service.template as service
     install -d ${D}/${CM_SYSUNIT_DD}
-    install -m 0644 ${WORKDIR}/service.template ${D}${CM_SYSUNIT_DD}/container-management.service
+    install -m 0644 ${UNPACKDIR}/service.template ${D}${CM_SYSUNIT_DD}/container-management.service
 
     # fill in the container management service template with the result configurations
     sed -e 's,@CM_BIN_DD@,${CM_BIN_DD},g' \

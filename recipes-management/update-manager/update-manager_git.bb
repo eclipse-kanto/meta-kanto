@@ -3,7 +3,7 @@ DESCRIPTION = "Eclipse Kanto - Update Manager"
 LICENSE = "EPL-2.0 | Apache-2.0"
 LIC_FILES_CHKSUM = "file://src/${GO_IMPORT}/LICENSE;md5=54cd967551e55d39f55006d3344c22fc"
 
-SRC_URI = "git://github.com/eclipse-kanto/update-manager;protocol=https;branch=main \
+SRC_URI = "git://github.com/eclipse-kanto/update-manager;protocol=https;branch=main;destsuffix=${GO_SRCURI_DESTSUFFIX} \
            file://config.json \
            file://service.template \
            "
@@ -49,10 +49,10 @@ do_install() {
     install -d ${D}${UM_CFG_DD}/kanto-update-manager
 
     # config.json
-    install -m 0644 ${WORKDIR}/config.json ${D}${UM_CFG_DD}/kanto-update-manager
+    install -m 0644 ${UNPACKDIR}/config.json ${D}${UM_CFG_DD}/kanto-update-manager
 
     # service.template as service
-    install -m 0644 ${WORKDIR}/service.template ${D}${UM_SYSUNIT_DD}/kanto-update-manager.service
+    install -m 0644 ${UNPACKDIR}/service.template ${D}${UM_SYSUNIT_DD}/kanto-update-manager.service
 
     # fill in the update-manager systemd service template with the custom configs provided
     sed -e 's,@UM_BIN_DD@,${UM_BIN_DD},g' \
